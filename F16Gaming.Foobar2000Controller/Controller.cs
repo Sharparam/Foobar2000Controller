@@ -4,9 +4,9 @@ namespace F16Gaming.Foobar2000Controller
 {
 	public class Controller
 	{
-		private string _host;
-		private ushort _port;
-		private Client _client;
+		private readonly string _host;
+		private readonly ushort _port;
+		private readonly Client _client;
 
 		public Controller(string host, ushort port)
 		{

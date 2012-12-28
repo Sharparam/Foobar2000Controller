@@ -11,9 +11,9 @@ namespace F16Gaming.Foobar2000Controller
 		public event MessageReceivedEventHandler MessageReceived;
 		public event DisconnectEventHandler Disconnect;
 
-		private TcpClient _tcpClient;
+		private readonly TcpClient _tcpClient;
 		private StreamReader _reader;
-		private Thread _listenThread;
+		private readonly Thread _listenThread;
 
 		public bool Active { get; private set; }
 

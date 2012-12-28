@@ -2,11 +2,9 @@
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Interop;
-using System.Windows.Media;
 using System.Windows.Threading;
 using Application = System.Windows.Application;
 using Brushes = System.Windows.Media.Brushes;
@@ -16,7 +14,7 @@ namespace F16Gaming.Foobar2000Controller.WpfOverlay
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : Window
+	public partial class MainWindow
 	{
 		[DllImport("user32.dll")]
 		private static extern int SendMessage(IntPtr hwnd, int msg, int wparam, int lparam);
@@ -33,7 +31,7 @@ namespace F16Gaming.Foobar2000Controller.WpfOverlay
 
 		private readonly Controller _controller;
 
-		private NotifyIcon _tray;
+		private readonly NotifyIcon _tray;
 
 		private bool _clickThrough;
 
