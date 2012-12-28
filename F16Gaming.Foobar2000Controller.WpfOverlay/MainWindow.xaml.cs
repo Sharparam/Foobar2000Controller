@@ -36,7 +36,6 @@ namespace F16Gaming.Foobar2000Controller.WpfOverlay
 		private NotifyIcon _tray;
 
 		private bool _clickThrough;
-		private bool _ctToggling;
 
 		public MainWindow()
 		{
@@ -51,9 +50,15 @@ namespace F16Gaming.Foobar2000Controller.WpfOverlay
 				_tray = new NotifyIcon();
 				_tray.Click += (o, e) => SetClickThrough(!_clickThrough);
 				_tray.DoubleClick += (o, e) => Exit();
-				_tray.Text = "Foobar2k Controller Overlay";
-				Stream iconStream = Application.GetResourceStream(new Uri("pack://application:,,,/Tray.ico")).Stream;
+				_tray.Text = @"Foobar2k Controller Overlay";
+				var streamResourceInfo = Application.GetResourceStream(new Uri("pack://application:,,,/Tray.ico"));
+				if (streamResourceInfo == null)
+					throw new Exception("Icon was not found, somehow! Report to developer...");
+				
+				Stream iconStream = streamResourceInfo.Stream;
 				_tray.Icon = new Icon(iconStream);
+				iconStream.Close();
+				iconStream.Dispose();
 				_tray.Visible = true;
 			}
 			catch (Exception ex)
@@ -65,6 +70,7 @@ namespace F16Gaming.Foobar2000Controller.WpfOverlay
 
 		private void Exit()
 		{
+			_tray.Visible = false;
 			_controller.Stop();
 			Close();
 		}
@@ -75,7 +81,6 @@ namespace F16Gaming.Foobar2000Controller.WpfOverlay
 			StatusLabel.IsHitTestVisible = !enabled;
 			_clickThrough = enabled;
 			Console.WriteLine(@"ClickThrough is now {0}", _clickThrough ? "enabled" : "diasbled");
-			_ctToggling = false;
 		}
 
 		private void SetStatusText(string text)
@@ -115,7 +120,7 @@ namespace F16Gaming.Foobar2000Controller.WpfOverlay
 		{
 			// Connection to foobar control server lost, close the application
 			if (Dispatcher.CheckAccess())
-				Close();
+				Exit();
 			else
 				Dispatcher.Invoke((VoidDelegate) (Close));
 		}

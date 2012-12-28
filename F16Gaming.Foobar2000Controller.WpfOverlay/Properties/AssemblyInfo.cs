@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("F16Gaming.Foobar2000Controller.WpfOverlay")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("F16Gaming foobar2k Controller Overlay")]
+[assembly: AssemblyDescription("Overlay window for the foobar2k controller")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("F16Gaming")]
 [assembly: AssemblyProduct("F16Gaming.Foobar2000Controller.WpfOverlay")]
-[assembly: AssemblyCopyright("Copyright ©  2012")]
+[assembly: AssemblyCopyright("Copyright © 2012 by Adam Hellberg")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,5 +51,5 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.1.2154")]
+[assembly: AssemblyFileVersion("1.0.1.2154")]

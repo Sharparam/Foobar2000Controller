@@ -48,8 +48,13 @@ namespace F16Gaming.Foobar2000Controller
 
 		public void Stop()
 		{
+			if (_reader == null)
+				return;
+
 			Console.WriteLine("Attempting to stop Client._listenThread...");
 			_reader.Close(); // Will cause SocketException to be thrown in Listen(), stopping the thread
+			_reader.Dispose();
+			_reader = null;
 		}
 
 		private Message ParseMessage(string raw)
@@ -89,8 +94,10 @@ namespace F16Gaming.Foobar2000Controller
 			}
 			finally
 			{
-				_reader.Close();
-				_tcpClient.Close();
+				if (_reader != null)
+					_reader.Close();
+				if (_tcpClient != null)
+					_tcpClient.Close();
 				Active = false;
 				Console.WriteLine("Client._listenThread has stopped");
 				OnDisconnect();
