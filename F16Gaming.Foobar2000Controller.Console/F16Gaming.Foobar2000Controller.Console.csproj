@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F5908DF5-AA56-4F2A-9273-67317429BB77}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{98570FAA-D08C-42F1-BFCE-2094144695CD}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>F16Gaming.Foobar2000Controller</RootNamespace>
-    <AssemblyName>F16Gaming.Foobar2000Controller</AssemblyName>
+    <RootNamespace>F16Gaming.Foobar2000Controller.Console</RootNamespace>
+    <AssemblyName>F16Gaming.Foobar2000Controller.Console</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -29,6 +29,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -39,18 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client.cs" />
-    <Compile Include="Controller.cs" />
-    <Compile Include="Events\MessageReceived.cs" />
-    <Compile Include="Message.cs" />
-    <Compile Include="MessageType.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SongMessage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\F16Gaming.Foobar2000Controller\F16Gaming.Foobar2000Controller.csproj">
+      <Project>{f5908df5-aa56-4f2a-9273-67317429bb77}</Project>
+      <Name>F16Gaming.Foobar2000Controller</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UseGlobalSettings="True" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" />
+      <UserProperties BuildVersion_UseGlobalSettings="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

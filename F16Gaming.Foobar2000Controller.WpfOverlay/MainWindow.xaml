@@ -1,0 +1,13 @@
+﻿<Window x:Class="F16Gaming.Foobar2000Controller.WpfOverlay.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Foobar2k Status Overlay" Height="119" Width="1032" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" WindowStartupLocation="CenterScreen" Background="Transparent">
+    <Grid>
+        <Label x:Name="StatusLabel" Content="%FOOBAR STATUS TEXT%" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" VerticalContentAlignment="Center" Background="{x:Null}" FontFamily="Helvetica Rounded LT Std" FontSize="26" MouseDown="StatusLabelMouseDown">
+            <Label.Effect>
+                <DropShadowEffect Color="White" Direction="0" BlurRadius="25" ShadowDepth="0" Opacity="0.75"/>
+            </Label.Effect>
+        </Label>
+
+    </Grid>
+</Window>
