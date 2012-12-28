@@ -45,25 +45,26 @@ namespace F16Gaming.Foobar2000Controller.WpfOverlay
 				var client = _controller.GetClient();
 				client.MessageReceived += (o, e) => UpdateStatus(e.Message);
 				client.Disconnect += (o, e) => Disconnect();
-				_tray = new NotifyIcon();
-				_tray.Click += (o, e) => SetClickThrough(!_clickThrough);
-				_tray.DoubleClick += (o, e) => Exit();
-				_tray.Text = @"Foobar2k Controller Overlay";
-				var streamResourceInfo = Application.GetResourceStream(new Uri("pack://application:,,,/Tray.ico"));
-				if (streamResourceInfo == null)
-					throw new Exception("Icon was not found, somehow! Report to developer...");
-				
-				Stream iconStream = streamResourceInfo.Stream;
-				_tray.Icon = new Icon(iconStream);
-				iconStream.Close();
-				iconStream.Dispose();
-				_tray.Visible = true;
 			}
 			catch (Exception ex)
 			{
 				Background = Brushes.Red;
 				StatusLabel.Content = "Failed to connect to control server (" + ex.GetType() + ").\nIs foobar2k running? Is foo_controlserver enabled?";
 			}
+
+			_tray = new NotifyIcon();
+			_tray.Click += (o, e) => SetClickThrough(!_clickThrough);
+			_tray.DoubleClick += (o, e) => Exit();
+			_tray.Text = @"Foobar2k Controller Overlay";
+			var streamResourceInfo = Application.GetResourceStream(new Uri("pack://application:,,,/Tray.ico"));
+			if (streamResourceInfo == null)
+				throw new Exception("Icon was not found, somehow! Report to developer...");
+
+			Stream iconStream = streamResourceInfo.Stream;
+			_tray.Icon = new Icon(iconStream);
+			iconStream.Close();
+			iconStream.Dispose();
+			_tray.Visible = true;
 		}
 
 		private void Exit()
