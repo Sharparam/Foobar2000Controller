@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Client.cs" />
     <Compile Include="Controller.cs" />
+    <Compile Include="Events\Disconnect.cs" />
     <Compile Include="Events\MessageReceived.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="MessageType.cs" />

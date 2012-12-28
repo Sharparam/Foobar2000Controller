@@ -9,6 +9,7 @@ namespace F16Gaming.Foobar2000Controller
 	public class Client
 	{
 		public event MessageReceivedEventHandler MessageReceived;
+		public event DisconnectEventHandler Disconnect;
 
 		private TcpClient _tcpClient;
 		private StreamReader _reader;
@@ -35,6 +36,14 @@ namespace F16Gaming.Foobar2000Controller
 				return;
 
 			func(this, new MessageReceivedEventArgs(message));
+		}
+
+		private void OnDisconnect()
+		{
+			var func = Disconnect;
+			if (func == null)
+				return;
+			func(this, null);
 		}
 
 		public void Stop()
@@ -74,12 +83,17 @@ namespace F16Gaming.Foobar2000Controller
 			{
 				Console.WriteLine("IOException while reading from server, Client._listenThread will terminate!");
 			}
+			catch (NullReferenceException)
+			{
+				Console.WriteLine("NullReferenceException while reading from server, Client._listenThread will terminate!");
+			}
 			finally
 			{
 				_reader.Close();
 				_tcpClient.Close();
 				Active = false;
 				Console.WriteLine("Client._listenThread has stopped");
+				OnDisconnect();
 			}
 		}
 	}

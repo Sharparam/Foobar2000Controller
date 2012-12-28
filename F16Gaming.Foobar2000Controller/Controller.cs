@@ -22,5 +22,10 @@ namespace F16Gaming.Foobar2000Controller
 		{
 			return _client;
 		}
+
+		public void Stop()
+		{
+			_client.Stop();
+		}
 	}
 }
